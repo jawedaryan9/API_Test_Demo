@@ -48,17 +48,4 @@ public class DeckOfCardAPI {
     }
 
 
-
-//    public String getDeckID()
-//    {
-//        RestAssured.baseURI = baseURL;
-//        Response response = given().filters(requestLoggingFilter,responseLoggingFilter)
-//                .queryParam("deck_count",1)
-//                .get("/new/shuffle/");
-//        JsonPath jsonPathEvaluator = response.jsonPath();
-//        return jsonPathEvaluator.get("deck_id");
-//
-//    }
-
-
 }
