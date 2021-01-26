@@ -1,0 +1,138 @@
+shouuld have github account
+inliji installed
+Advanced Rest Client like postman
+
+GET
+POST
+PUT		like UPDATE
+DELETE
+
+Shashank Chouhan
+919907371313
+
+
+cucumber (write picture file
+
+java testNG and 
+
+rest assure and http
+
+
+
+Github account  (Colloboration tool can give access to anyone )
+jawedaryan9
+Jh..
+new password
+Apitesting123
+
+
+This is my URL where I done my project: I allowed public access
+https://github.com/jawedaryan9/API_Test_Demo
+open src folder
+
+get from VCS third option in Intellji then click on github and click on Code copy URL and past in Intellji
+
+what is scope in mavin
+
+
+
+
+after question mark is query parameter
+and this <<deck_id>> call query parameter
+
+
+Junit used as testing framework and 
+Rest Assured to deal with Rest API's from java client
+Created a Maven project (Added dependencies of junit and rest assure in pom.xml)
+
+
+
+git status
+git add filename
+git commit -m "customize message"
+git push
+it will ask for user and password
+go to code 
+
+
+
+
+
+package com.deckofcards.tests;
+
+import io.restassured.RestAssured;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import static io.restassured.RestAssured.*;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class DeckOfCardAPI {
+    RequestLoggingFilter requestLoggingFilter = new RequestLoggingFilter();
+    ResponseLoggingFilter responseLoggingFilter = new ResponseLoggingFilter();
+    String baseURL = "https://deckofcardsapi.com/api/deck";
+    static String strDeckId="";
+
+    /*
+    @author : Jawed
+    @date : 26/01/2021
+     */
+    @Test
+    public  void getShuffledCards()
+    {
+        RestAssured.baseURI = baseURL;
+        Response response = given().filters(requestLoggingFilter,responseLoggingFilter)
+                .queryParam("deck_count",1)
+                .get("/new/shuffle/");
+        Assertions.assertEquals(200,response.getStatusCode());
+        JsonPath jsonPathEvaluator = response.jsonPath();
+        strDeckId = jsonPathEvaluator.get("deck_id");
+    }
+    @Test
+    public  void getDrawCard()
+    {
+        RestAssured.baseURI = baseURL;
+        Response response = given().filters(requestLoggingFilter,responseLoggingFilter)
+                .queryParam("deck_count",1)
+                .pathParam("variable",strDeckId)
+                .get("{variable}/draw");
+        Assertions.assertEquals(200,response.getStatusCode());
+        JsonPath jsonPathEvaluator = response.jsonPath();
+        boolean bSuccess = jsonPathEvaluator.get("success");
+        Assertions.assertTrue(bSuccess);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+***********
+If you wont find deck id then use this code I commented this line in above code
+
+
+
+//    public String getDeckID()
+//    {
+//        RestAssured.baseURI = baseURL;
+//        Response response = given().filters(requestLoggingFilter,responseLoggingFilter)
+//                .queryParam("deck_count",1)
+//                .get("/new/shuffle/");
+//        JsonPath jsonPathEvaluator = response.jsonPath();
+//        return jsonPathEvaluator.get("deck_id");
+//
+//    }
