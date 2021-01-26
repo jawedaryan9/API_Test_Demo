@@ -1,1 +1,2 @@
-# API_Test_Demo
+# RestAPIAutomation
+Rest API Automation Using Rest Assured
